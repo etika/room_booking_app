@@ -1,0 +1,27 @@
+<h1> Unreserved Rooms</h1>
+<table>
+<thead>
+<th>
+Room Name
+</th>
+<th>
+Room Number
+</th>
+<th>
+Booking
+</th>
+<thead>
+<tbody>
+<% @unreserved_rooms_ids.each do |ur| %>
+   <%room=Room.find(ur)%>
+   <tr>
+   <td><%=room.name%></td>
+   <td><%=room.room_number%>
+   </td>
+   <td>
+     <%= link_to "Book Now", room_path(room)%>
+   </td>
+   </tr>
+<% end %>
+</tbody>
+</table>

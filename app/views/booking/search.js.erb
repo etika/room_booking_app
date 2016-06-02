@@ -1,0 +1,5 @@
+<% if @unreserved_rooms_ids.any?%>
+  $('#room_list').html("<%=escape_javascript(render 'unreserved_rooms',:unreserved_room_ids => @unreserved_room_ids )%>");
+<% else %>
+  $("#room_list").html("<h2>No rooms available </h2>")
+<% end %>

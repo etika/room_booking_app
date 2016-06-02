@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>Room Booking Service</h2>
+  <div class="well">
+  <%= form_tag("/booking/search",remote: true) do %> 
+    <%= text_field_tag :date_in,'',:placeholder=>"Date In", :class => "datepicker" %>
+    <%= text_field_tag :date_out,'', :placeholder=>"Date Out",:class => "datepicker" %>
+    <%=select_tag "room_type", options_from_collection_for_select( RoomType.all,:id,:room_type_with_bedding_type ), prompt: " Room Type"%>
+ 
+    <%= submit_tag "Submit"%>
+  <%end%>
+  </div>
+  <div id="room_list" class="well">
+  <%if @unreserved_rooms_ids.present?%>
+   <%=render :partial => "booking/unreserved_rooms", :locals => {:unreserved_rooms_ids => @unreserved_rooms_ids}%>
+  <%end%>
+</div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker({startDate: '+0d',endDate: '+6m',format: 'dd/mm/yyyy'});
+  });
+</script>

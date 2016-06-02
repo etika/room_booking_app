@@ -1,0 +1,17 @@
+<h1> Booking Information</h1>
+<table>
+<thead>
+  <th>Date In</th>
+  <th>Date Out </th>
+  <th> Booked On </th>
+</thead>
+<tbody>
+<%@reservations.each do |r|%>
+ <tr>
+ <td><%=r.date_in.strftime('%c')%></td>
+ <td><%=r.date_out.strftime('%c')%></td>
+ <td><%=r.created_at.strftime('%c')%></td>
+ </tr>
+<%end%>
+</tbody>
+</table>
